@@ -1,16 +1,24 @@
-import React from "react";
-
 const BottomBar = () => {
+  const pathname = window.location.pathname;
+
+  const getIconSrc = (type) => {
+    if (pathname.includes(type)) {
+      return `/assets/${type}.svg`;
+    } else {
+      return `/assets/none_${type}.svg`;
+    }
+  };
+
   return (
     <div className="fixed bottom-0 w-full flex justify-between items-center bg-white pt-4 pb-8 px-[46px] z-50">
       <div>
-        <img src="/assets/report.svg" alt="report" className="w-6 h-6" />
+        <img src={getIconSrc("report")} alt="report" className="w-6 h-6" />
       </div>
       <div>
-        <img src="/assets/home.svg" alt="home" className="w-6 h-6" />
+        <img src={getIconSrc("home")} alt="home" className="w-6 h-6" />
       </div>
       <div>
-        <img src="/assets/mypage.svg" alt="mypage" className="w-6 h-6" />
+        <img src={getIconSrc("mypage")} alt="mypage" className="w-6 h-6" />
       </div>
     </div>
   );
