@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import NextButton from '../components/NextButton';
+import TextInput from '../components/TextInput';
 
 export default function UserInfoPage() {
   const [name, setName] = useState('');
+  const [age, setAge]         = useState(''); 
   const [gender, setGender] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError]     = useState(null);
   const navigate = useNavigate();
 
   // 로그인 후 저장된 userId를 localStorage 등에서 가져옵니다.
@@ -59,10 +63,10 @@ export default function UserInfoPage() {
       const res = await fetch('http://localhost:8080/api/member/info', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId, name, gender }),
+        body: JSON.stringify({ userId, name, gender, age: parseInt(age, 10) }),
       });
       if (!res.ok) throw new Error('회원정보 저장 실패');
-      navigate('/routine/create');
+      navigate('/goals');
     } catch (err) {
       console.error(err);
       setError(err.message);
@@ -74,12 +78,12 @@ export default function UserInfoPage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-white">
+    <div className="relative min-h-screen bg-[#F8FDFC]">
       <Header showBack />
 
       {/* 진행 바: 사용자 정보 단계가 1/4 임을 나타냅니다 */}
       <div className="mt-2 w-full h-1 bg-gray-200">
-        <div className="w-1/4 h-full bg-green-400" />
+        <div className="w-1/4 h-full bg-[#ACEBDC]" />
       </div>
 
       <div className="px-4 mt-6">
@@ -93,12 +97,22 @@ export default function UserInfoPage() {
         {/* 이름 입력 필드 */}
         <div className="mt-6">
           <label className="block text-sm font-medium text-gray-700">이름</label>
-          <input
-            type="text"
-            placeholder="이름을 입력해주세요."
+          <TextInput
             value={name}
+            placeholder="이름을 입력해주세요."
             onChange={e => setName(e.target.value)}
-            className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-green-400"
+            className="mt-2 focus:outline-none focus:ring-[#898D9E] focus:border-[#898D9E]"
+          />
+        </div>
+
+        <div className="mt-6">
+          <label className="block text-sm font-medium text-gray-700">나이</label>
+          <input
+            type="number"
+            placeholder="나이를 입력해주세요."
+            value={age}
+            onChange={e => setAge(e.target.value)}
+            className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-[#898D9E]"
           />
         </div>
 
@@ -109,9 +123,9 @@ export default function UserInfoPage() {
             <button
               type="button"
               onClick={() => setGender('MALE')}
-              className={`flex-1 py-2 rounded-lg border text-center ${
+              className={`flex-1 py-2 rounded-lg border-3 text-center focus:outline-none focus:ring-[#898D9E] focus:border-[#898D9E] ${
                 gender === 'MALE'
-                  ? 'bg-green-100 border-green-400'
+                  ? 'border-[#898D9E] bg-white text-gray-900'
                   : 'border-gray-300'
               }`}
             >
@@ -120,9 +134,9 @@ export default function UserInfoPage() {
             <button
               type="button"
               onClick={() => setGender('FEMALE')}
-              className={`flex-1 py-2 rounded-lg border text-center ${
+              className={`flex-1 py-2 rounded-lg border-3 text-center focus:outline-none focus:ring-[#898D9E] focus:border-[#898D9E] ${
                 gender === 'FEMALE'
-                  ? 'bg-green-100 border-green-400'
+                  ? 'border-[#898D9E] bg-white text-gray-900'
                   : 'border-gray-300'
               }`}
             >

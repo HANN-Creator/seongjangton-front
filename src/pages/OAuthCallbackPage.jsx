@@ -1,29 +1,24 @@
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-export default function OAuthCallbackPage() {
-  const navigate = useNavigate()
+export default function OAuthCallbackPage({ onLogin }) {
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    const code = params.get('code')
-    if (!code) {
-      console.error('카카오 인증 코드가 없습니다.')
-      return
+    const params = new URLSearchParams(location.search);
+    const userId    = params.get('userId');
+    const isNewUser = params.get('isNewUser') === 'true';
+
+    if (userId) {
+      localStorage.setItem('userId', userId);
+      localStorage.setItem('isNewUser', isNewUser);
+      onLogin?.({ userId, isNewUser });
+      navigate(isNewUser ? '/member/info' : '/userinfo', { replace: true });
+    } else {
+      navigate('/userinfo', { replace: true });
     }
+  }, [location.search, navigate, onLogin]);
 
-    // 백엔드로 코드 전송 → 토큰 교환 & 회원 저장
-    fetch(`/api/member/kakao?code=${code}`)
-      .then(res => res.json())
-      .then(({ result }) => {
-        // 예: result.id 에 사용자 ID가 돌아온다고 가정
-        localStorage.setItem('userId', result.id)
-        navigate('/userinfo', { replace: true })
-      })
-      .catch(err => {
-        console.error('OAuthCallback 에러:', err)
-      })
-  }, [navigate])
-
-  return <div>로그인 처리 중… 잠시만 기다려주세요.</div>
+  return <div>로그인 처리 중...</div>;
 }

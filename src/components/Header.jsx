@@ -1,25 +1,25 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import backIcon from '../assets/back.png';
 
-export default function Header({ showBack = false, title = 'RoutineApp' }) {
+export default function Header({ showBack = false }) {
   const navigate = useNavigate();
   return (
-    <header className="flex items-center justify-between p-4 bg-white shadow-md">
+    <header className="flex items-center justify-between p-4 bg-[#F8FDFC]">
       {showBack ? (
         <button
           onClick={() => navigate(-1)}
-          className="text-gray-600 hover:text-gray-800 focus:outline-none"
+          className="focus:outline-none"
         >
-          ← Back
+          <img
+            src={backIcon}
+            alt="뒤로가기"
+            className="w-6 h-6"
+          />
         </button>
       ) : (
-        <div />
+        <div className="w-6 h-6" />
       )}
 
-      <h1 className="text-xl font-semibold text-gray-800">{title}</h1>
-
-      <Link to="/" className="text-gray-600 hover:text-gray-800">
-        Home
-      </Link>
     </header>
   );
 }
