@@ -1,0 +1,48 @@
+{
+  "_id": {
+    "$oid": "66488c90e99123456789abcd"
+  },
+  "nickname": "Groot",
+  "kakaoId": "1234567890",
+  "imageUrl": "http://example.com/groot.jpg",
+  "points": 1000,
+  "keyword": {
+    "content": "운동",
+    "routines": [
+      {
+        "content": "매일 아침 30분 조깅",
+        "createdAt": {
+          "$date": "2025-05-18T09:00:00.000Z"
+        },
+        "successAt": {
+          "$date": "2025-05-18T09:30:00.000Z"
+        },
+        "status": "SUCCESS"
+      },
+      {
+        "content": "주 3회 헬스장 방문",
+        "createdAt": {
+          "$date": "2025-05-18T10:00:00.000Z"
+        },
+        "successAt": null,
+        "status": "IN_PROGRESS"
+      }
+    ],
+    "feedbacks": [
+      {
+        "content": "조깅 후 상쾌함을 느꼈어요!",
+        "createdAt": {
+          "$date": "2025-05-18T09:35:00.000Z"
+        }
+      },
+      {
+        "content": "이번 주 헬스 목표는 하체 운동!",
+        "createdAt": {
+          "$date": "2025-05-18T10:05:00.000Z"
+        }
+      }
+    ]
+  },
+  "age": 28,
+  "gender": "MALE"
+}
