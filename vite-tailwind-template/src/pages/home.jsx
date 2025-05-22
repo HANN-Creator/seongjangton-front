@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../components/Header";
-import BottomBar from "../components/BottomBar";
+import Footer from "../components/Footer";
 import Checklist from "../components/Checklist";
 
 const Home = () => {
@@ -34,9 +34,10 @@ const Home = () => {
         );
 
         // 날짜 포맷
-        const today = new Date();
-        const formattedDate = today.toISOString().slice(0, 10);
+        const now = new Date();
+        const formattedDate = now.toISOString().slice(0, 10);
         setToday(formattedDate);
+        console.log(formattedDate);
 
         // D+N 계산
         const startDate = new Date(userData.keyword?.routines?.[0]?.createdAt);
@@ -74,14 +75,14 @@ const Home = () => {
             </p>
             <p className="mt-1 text-[20px] font-semibold text-[#3B4159] font-pretendard">
               <span className="inline-block bg-[#DEF7F1] px-1 mb-[19px]">
-                {userInfo?.keyword?.content || "키워드 없음"}
+                {userInfo?.keyword?.content || "없음"}
               </span>
             </p>
 
             <div className="flex gap-2">
               <div className="flex flex-col items-center gap-2 p-2 rounded bg-[#F8FDFC]">
                 <p className="text-[#3B4159] text-[16px] font-semibold font-pretendard text-center self-stretch">
-                  {dPlus}
+                  D+{dPlus}
                 </p>
                 <p className="text-[#3B4159] text-[12px] font-normal font-pretendard text-center self-stretch">
                   루틴 시작한지
@@ -114,7 +115,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <BottomBar />
+        <Footer />
       </div>
     </div>
   );
