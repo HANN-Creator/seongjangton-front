@@ -10,7 +10,10 @@ const BottomBar = () => {
   };
 
   return (
-    <div className="fixed bottom-0 w-full flex justify-between items-center bg-white pt-4 pb-8 px-[46px] z-50">
+    <div
+      style={{ boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.08)" }}
+      className="fixed max-w-[360px] bottom-0 w-full flex justify-between items-center bg-white pt-4 pb-8 px-[46px] z-50"
+    >
       <div>
         <img src={getIconSrc("report")} alt="report" className="w-6 h-6" />
       </div>

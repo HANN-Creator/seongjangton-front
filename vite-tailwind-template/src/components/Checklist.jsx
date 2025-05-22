@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Checklist = ({ icon, text, checked }) => {
+const Checklist = ({ icon, text, defaultChecked = false }) => {
+  const [checked, setChecked] = useState(defaultChecked);
+
   return (
-    <div className="flex items-center justify-between bg-white rounded-xl px-3 py-3 shadow-sm">
+    <div className="flex flex-row items-start gap-[10px] justify-between p-3 rounded-[8px] border border-[#EBEBEB] bg-white mb-3">
       <div className="flex items-center gap-2">
-        <img src={icon} alt="icon" className="w-6 h-6" />
-        <span className="text-base text-gray-800">{text}</span>
+        <img
+          src={icon}
+          alt="icon"
+          className="w-[24px] h-[24px] aspect-square"
+        />
+        <span className="text-[#3B4159] text-[16px] font-normal font-pretendard">
+          {text}
+        </span>
       </div>
       <div
-        className={`w-6 h-6 rounded-full border-2 ${
+        className={`w-6 h-6 rounded-full border-2 flex items-center justify-center cursor-pointer ${
           checked ? "bg-[#ACEBDC] border-[#ACEBDC]" : "border-[#ACEBDC]"
         }`}
-      ></div>
+        onClick={() => setChecked(!checked)}
+      >
+        {checked && (
+          <img src="/assets/checked.svg" alt="checked" className="w-3 h-3" />
+        )}
+      </div>
     </div>
   );
 };

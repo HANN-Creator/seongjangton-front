@@ -21,7 +21,10 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed top-0 w-full flex justify-between items-center bg-white pt-[20px] pb-[12px] px-[20px] z-50">
+    <div
+      className="fixed top-0 w-full flex justify-between items-center max-w-[360px] bg-[#F8FDFC] pt-[20px] pb-[12px] px-[20px] z-50"
+      style={{ boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.08)" }}
+    >
       <div className="w-6 h-6">
         {showBackButton ? (
           <img
