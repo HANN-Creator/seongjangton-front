@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import GoalsPage from "./pages/GoalsPage";
 import LoginPage from "./pages/LoginPage";
 import Home from "./pages/Home";
 import OAuthCallbackPage from "./pages/OAuthCallbackPage";
@@ -19,8 +20,10 @@ export default function App() {
       {/* 로그인 전용 화면 */}
       <Routes>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/oauth/callback" element={<OAuthCallbackPage />} />
+        <Route path="/kakao" element={<OAuthCallbackPage />} />
         <Route path="/userinfo" element={<UserInfoPage />} />
+        <Route path="/goals" element={<GoalsPage />} />
+        <Route path="/routine/create" element={<RoutineCreate />} />
 
         {/* 인증된 사용자만 접근 */}
         <Route
@@ -32,12 +35,6 @@ export default function App() {
                 <main className="pb-16">
                   <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/userinfo" element={<UserInfoPage />} />
-                    <Route
-                      path="/oauth/callback"
-                      element={<OAuthCallbackPage />}
-                    />
-                    <Route path="/routine/create" element={<RoutineCreate />} />
                     <Route path="/routine/edit/:id" element={<RoutineEdit />} />
                     <Route path="/routine/:id" element={<RoutineDetail />} />
                     <Route path="/profile" element={<Profile />} />
