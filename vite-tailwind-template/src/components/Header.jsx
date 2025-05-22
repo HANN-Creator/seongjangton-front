@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const pathname = window.location.pathname;
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const showBackButton = !(
     pathname.includes("home") ||
@@ -31,7 +31,7 @@ const Header = () => {
             src="/assets/backbutton.svg"
             alt="back"
             className="w-full h-full cursor-pointer"
-            onClick={() => navigate(-1)}
+            //onClick={() => navigate(-1)}
           />
         ) : null}
       </div>
