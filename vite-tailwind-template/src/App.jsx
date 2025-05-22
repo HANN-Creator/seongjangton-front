@@ -11,6 +11,7 @@ import RoutineEdit from "./pages/RoutineEdit";
 import RoutineDetail from "./pages/RoutineDetail";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
+import Report from "./pages/Report";
 
 export default function App() {
   const isLoggedIn = Boolean(localStorage.getItem("userId"));
@@ -19,6 +20,7 @@ export default function App() {
     <BrowserRouter>
       {/* 로그인 전용 화면 */}
       <Routes>
+        <Route path="/" element={<Report />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/kakao" element={<OAuthCallbackPage />} />
         <Route path="/userinfo" element={<UserInfoPage />} />
