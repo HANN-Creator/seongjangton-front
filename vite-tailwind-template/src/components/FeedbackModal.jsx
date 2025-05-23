@@ -7,8 +7,8 @@ const FeedbackModal = ({
   onClose,
 }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-      <div className="bg-white rounded-xl p-6 w-[320px] absolute top-[23%]">
+    <div className="fixed inset-0 z-50 bg-[#00000066] flex items-center justify-center">
+      <div className="bg-white rounded-xl p-6 w-[320px] mb-[150px]">
         <div className="flex justify-center items-center mb-6">
           <img className="w-8" src="/assets/bulb.svg"></img>
           <h3 className="text-lg font-bold text-[#3B4159]  text-center">
