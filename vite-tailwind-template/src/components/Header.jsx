@@ -11,7 +11,8 @@ const Header = () => {
   );
 
   const renderCenterContent = () => {
-    if (pathname.includes("routine/add")) return "루틴추가하기";
+    if (pathname.includes("create")) return "루틴 추가하기";
+    if (pathname.includes("edit")) return "루틴 수정하기";
     if (pathname.includes("home"))
       return <img src="/assets/logo.svg" alt="logo" className="h-6" />;
     if (pathname.includes("report")) return "월별 리포트";
