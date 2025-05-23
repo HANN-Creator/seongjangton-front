@@ -21,7 +21,6 @@ export default function App() {
     <BrowserRouter>
       {/* 로그인 전용 화면 */}
       <Routes>
-        <Route path="/" element={<Remind />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/kakao" element={<OAuthCallbackPage />} />
         <Route path="/userinfo" element={<UserInfoPage />} />
@@ -42,7 +41,7 @@ export default function App() {
                     <Route path="/routine/:id" element={<RoutineDetail />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/report" element={<Report />} />
-
+                    <Route path="/remind" element={<Remind />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
