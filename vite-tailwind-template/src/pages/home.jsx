@@ -41,7 +41,7 @@ const Home = () => {
 
         // D+N 계산
         const startDate = new Date(userData.keyword?.routines?.[0]?.createdAt);
-        const diffTime = today - startDate;
+        const diffTime = now - startDate;
         const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
         setDPlus(diffDays >= 0 ? `D+${diffDays}` : "D-?");
 

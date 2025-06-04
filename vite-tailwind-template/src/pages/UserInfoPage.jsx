@@ -6,6 +6,8 @@ import NextButton from "../components/NextButton";
 export default function UserInfoPage() {
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   // 로그인 후 저장된 userId를 localStorage 등에서 가져옵니다.
